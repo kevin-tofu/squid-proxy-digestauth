@@ -11,7 +11,8 @@ SQUID_PASS=${SQUID_PASS}
 
 if ( [ -n "${SQUID_USER}" ] && [ -n "${SQUID_PASS}" ] ); then
   # Create a username/password for ncsa_auth.
-  htpasswd -c -i -b /etc/squid/.htpasswd ${SQUID_USER} ${SQUID_PASS}
+  # htpasswd -c -i -b /etc/squid/.htpasswd ${SQUID_USER} ${SQUID_PASS}
+  htpasswd -c -p -i -b /etc/squid/.htpasswd ${SQUID_USER} ${SQUID_PASS}
 
   sed -i "1 i\\
 auth_param digest program /usr/lib/squid/digest_file_auth /etc/squid/.htpasswd\\
